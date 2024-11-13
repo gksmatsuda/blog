@@ -1,0 +1,20 @@
+<!-- blog/templates/blog/category_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categorias</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <h1>Categorias</h1>
+    <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'category_detail' pk=category.pk %}">{{ category.nome }}</a>
+                <p>{{ category.descricao }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

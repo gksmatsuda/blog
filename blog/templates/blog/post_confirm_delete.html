@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Excluir Post</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <div class="delete-container">
+        <h1>Excluir Post</h1>
+        <p>Tem certeza de que deseja excluir o post "{{ post.titulo }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Sim, excluir</button>
+            <a href="{% url 'post_detail' post.pk %}" class="btn-cancel">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

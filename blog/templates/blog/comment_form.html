@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Novo Comentário</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Adicionar Comentário</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Comentar</button>
+            <a href="{% url 'post_detail' pk=pk %}" class="btn-cancel">Cancelar</a>
+
+
+        </form>
+    </div>
+</body>
+</html>

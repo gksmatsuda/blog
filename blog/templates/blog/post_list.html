@@ -1,0 +1,32 @@
+<!-- blog/templates/blog/post_list.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Posts</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+</head>
+<body>
+    <h1>Lista de Posts</h1>
+
+    <!-- Link para criar novo post -->
+    <a href="{% url 'post_create' %}" class="btn">Criar Novo Post</a>
+
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.titulo }}</a>
+                <p>Publicado em: {{ post.data_postagem|date:"d/m/Y" }}</p>
+                {% if post.categorias.exists %}
+                    <p>Categorias:
+                        {% for category in post.categorias.all %}
+                            <a href="{% url 'category_detail' pk=category.pk %}">{{ category.nome }}</a>
+                            {% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

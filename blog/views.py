@@ -19,8 +19,8 @@ class CommentCreateView(CreateView):
     template_name = 'blog/comment_form.html'
 
     def form_valid(self, form):
-        form.instance.post_id = self.kwargs['pk']  # Associa o comentário ao post específico
-        form.instance.autor = self.request.user  # Define o autor como o usuário logado
+        form.instance.post_id = self.kwargs['pk']  
+        form.instance.autor = self.request.user  
         return super().form_valid(form)
 
     def get_success_url(self):
@@ -70,8 +70,8 @@ class CommentCreateView(CreateView):
     template_name = 'blog/comment_form.html'
 
     def form_valid(self, form):
-        form.instance.post_id = self.kwargs['pk']  # Associa o comentário ao post específico
-        form.instance.autor = self.request.user  # Define o autor como o usuário logado
+        form.instance.post_id = self.kwargs['pk']  
+        form.instance.autor = self.request.user  
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -90,7 +90,7 @@ class CategoryListView(ListView):
 # ListView para exibir posts de uma categoria específica
 class CategoryDetailView(ListView):
     model = Post
-    template_name = 'blog/post_list.html'  # Reutiliza o template de listagem de posts
+    template_name = 'blog/post_list.html'  
     context_object_name = 'posts'
 
     def get_queryset(self):
